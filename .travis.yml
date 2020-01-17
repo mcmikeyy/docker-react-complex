@@ -3,8 +3,7 @@ language: generic
 services:
   - docker
 
-before_install:
-  -docker build -t mconnors/docker-react-complex -f ./client/Dockerfile.dev ./client
+before_install: -docker build -t mconnors/docker-react-complex -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true mconnors/docker-react-complex npm test
@@ -16,10 +15,8 @@ after_success:
   - docker build -t mconnors/multi-worker ./worker
   # log into docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # take the images and push into docker hub
-  -docker push mconnors/multi-client
-  -docker push mconnors/multi-nginx
-  -docker push mconnors/multi-server
-  -docker push mconnors/multi-worker
-
-
+  # take the images and push into dockerhub
+  - docker push mconnors/multi-client
+  - docker push mconnors/multi-nginx
+  - docker push mconnors/multi-server
+  - docker push mconnors/multi-worker
