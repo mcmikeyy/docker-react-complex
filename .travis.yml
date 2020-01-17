@@ -1,4 +1,5 @@
 sudo: required
+language: generic
 services:
   - docker
 
@@ -20,4 +21,5 @@ after_success:
   -docker push mconnors/multi-nginx
   -docker push mconnors/multi-server
   -docker push mconnors/multi-worker
+
 
