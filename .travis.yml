@@ -3,7 +3,8 @@ language: generic
 services:
   - docker
 
-before_install: -docker build -t mconnors/docker-react-complex -f ./client/Dockerfile.dev ./client
+before_install: 
+  - docker build -t mconnors/docker-react-complex -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true mconnors/docker-react-complex npm test
